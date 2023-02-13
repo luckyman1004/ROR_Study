@@ -1002,3 +1002,98 @@ Processing by ArticlesController#show as HTML
 Completed 200 OK in 132ms (Views: 100.3ms | ActiveRecord: 2.2ms | Allocations: 3865)
 
 
+Started GET "/articles/3" for ::1 at 2023-02-13 12:21:43 +0530
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mArticle Load (2.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:4:in `show'
+Completed 404 Not Found in 128ms (ActiveRecord: 9.8ms | Allocations: 1117)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Article with 'id'=3):
+  
+app/controllers/articles_controller.rb:4:in `show'
+Started GET "/articles/4" for ::1 at 2023-02-13 12:21:50 +0530
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mArticle Load (1.9ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:4:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 11)
+  Rendered layout layouts/application.html.erb (Duration: 131.3ms | Allocations: 3048)
+Completed 200 OK in 172ms (Views: 134.3ms | ActiveRecord: 1.9ms | Allocations: 3773)
+
+
+Started GET "/articles" for ::1 at 2023-02-13 16:29:29 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/articles"):
+  
+Started GET "/articles" for ::1 at 2023-02-13 16:31:39 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  Rendered articles/index.html.erb within layouts/application (Duration: 21.1ms | Allocations: 2139)
+  Rendered layout layouts/application.html.erb (Duration: 24.6ms | Allocations: 2227)
+Completed 500 Internal Server Error in 85ms (Allocations: 2798)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass
+
+'.freeze;   @articles.each do |article| 
+                     ^^^^^):
+    3: <h1>Articles Page</h1>
+    4: 
+    5: <div id="articles">
+    6:   <% @articles.each do |article| %>
+    7:     <%= render article %>
+    8:     <p>
+    9:       <%= link_to "Show this article", article %>
+  
+app/views/articles/index.html.erb:6
+Started GET "/articles" for ::1 at 2023-02-13 16:33:10 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  Rendered articles/index.html.erb within layouts/application (Duration: 6.9ms | Allocations: 1883)
+  Rendered layout layouts/application.html.erb (Duration: 8.5ms | Allocations: 1971)
+Completed 500 Internal Server Error in 66ms (Allocations: 2543)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass
+
+'.freeze;   @articles.each do |article| 
+                     ^^^^^):
+    3: <h1>Articles Page</h1>
+    4: 
+    5: <div id="articles">
+    6:   <% @articles.each do |article| %>
+    7:     <%= render article %>
+    8:     <p>
+    9:       <%= link_to "Show this article", article %>
+  
+app/views/articles/index.html.erb:6
+Started GET "/articles" for ::1 at 2023-02-13 16:33:58 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  Rendered articles/index.html.erb within layouts/application (Duration: 14.3ms | Allocations: 368)
+  Rendered layout layouts/application.html.erb (Duration: 673.0ms | Allocations: 19227)
+Completed 200 OK in 799ms (Views: 706.8ms | Allocations: 20060)
+
+
+  [1m[36mArticle Load (5.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+Started GET "/articles" for ::1 at 2023-02-13 16:41:43 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (5.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:13
+  Rendered articles/index.html.erb within layouts/application (Duration: 49.3ms | Allocations: 2319)
+  Rendered layout layouts/application.html.erb (Duration: 719.7ms | Allocations: 21384)
+Completed 200 OK in 934ms (Views: 746.1ms | ActiveRecord: 13.0ms | Allocations: 23184)
+
+

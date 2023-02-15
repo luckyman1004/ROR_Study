@@ -2651,3 +2651,377 @@ Processing by ArticlesController#create as TURBO_STREAM
 Completed 422 Unprocessable Entity in 168ms (Views: 132.6ms | ActiveRecord: 0.0ms | Allocations: 8645)
 
 
+Started POST "/articles" for 127.0.0.1 at 2023-02-14 18:59:17 +0530
+Processing by ArticlesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "article"=>{"title"=>"Hello Rails", "description"=>"Welcome to Rails 7.\nRead documentation carefully"}, "commit"=>"Save Article"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/articles_controller.rb:16:in `create'
+  [1m[36mArticle Create (20.2ms)[0m  [1m[32mINSERT INTO "articles" ("description", "created_at", "updated_at", "title") VALUES (?, ?, ?, ?)[0m  [["description", "Welcome to Rails 7.\nRead documentation carefully"], ["created_at", "2023-02-14 13:29:18.864327"], ["updated_at", "2023-02-14 13:29:18.864327"], ["title", "Hello Rails"]]
+  ↳ app/controllers/articles_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (21.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/articles_controller.rb:16:in `create'
+Redirected to http://127.0.0.1:3000/articles/9
+Completed 302 Found in 291ms (ActiveRecord: 48.6ms | Allocations: 5818)
+
+
+Started GET "/articles/9" for 127.0.0.1 at 2023-02-14 18:59:19 +0530
+Processing by ArticlesController#show as TURBO_STREAM
+  Parameters: {"id"=>"9"}
+  [1m[36mArticle Load (4.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:3:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (Duration: 8.9ms | Allocations: 159)
+  Rendered layout layouts/application.html.erb (Duration: 157.8ms | Allocations: 7008)
+Completed 500 Internal Server Error in 302ms (ActiveRecord: 4.8ms | Allocations: 10271)
+
+
+  
+ActionView::Template::Error (undefined method `javascript_pack_tag' for #<ActionView::Base:0x00000000013ee8>
+
+    '.freeze;@output_buffer.append=( javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' );@output_buffer.safe_append='
+                                     ^^^^^^^^^^^^^^^^^^^
+Did you mean?  javascript_path
+               javascript_tag):
+     5:     <%= csrf_meta_tags %>
+     6:     <%= csp_meta_tag %>
+     7:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     8:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+     9:   </head>
+    10: 
+    11:   <body>
+  
+app/views/layouts/application.html.erb:8
+Started GET "/articles/new" for 127.0.0.1 at 2023-02-14 19:01:46 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (Duration: 13.3ms | Allocations: 1469)
+  Rendered layout layouts/application.html.erb (Duration: 135.1ms | Allocations: 7758)
+Completed 500 Internal Server Error in 192ms (ActiveRecord: 0.0ms | Allocations: 8565)
+
+
+  
+ActionView::Template::Error (undefined method `javascript_pack_tag' for #<ActionView::Base:0x00000000014258>
+
+    '.freeze;@output_buffer.append=( javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' );@output_buffer.safe_append='
+                                     ^^^^^^^^^^^^^^^^^^^
+Did you mean?  javascript_path
+               javascript_tag):
+     5:     <%= csrf_meta_tags %>
+     6:     <%= csp_meta_tag %>
+     7:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     8:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+     9:   </head>
+    10: 
+    11:   <body>
+  
+app/views/layouts/application.html.erb:8
+Started GET "/articles" for 127.0.0.1 at 2023-02-14 19:02:02 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (5.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:13
+  Rendered articles/index.html.erb within layouts/application (Duration: 23.8ms | Allocations: 907)
+  Rendered layout layouts/application.html.erb (Duration: 203.0ms | Allocations: 6950)
+Completed 500 Internal Server Error in 298ms (ActiveRecord: 5.5ms | Allocations: 7271)
+
+
+  
+ActionView::Template::Error (undefined method `javascript_pack_tag' for #<ActionView::Base:0x000000000145a0>
+
+    '.freeze;@output_buffer.append=( javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' );@output_buffer.safe_append='
+                                     ^^^^^^^^^^^^^^^^^^^
+Did you mean?  javascript_path
+               javascript_tag):
+     5:     <%= csrf_meta_tags %>
+     6:     <%= csp_meta_tag %>
+     7:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     8:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+     9:   </head>
+    10: 
+    11:   <body>
+  
+app/views/layouts/application.html.erb:8
+Started GET "/articles/new" for ::1 at 2023-02-14 19:02:10 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 948)
+  Rendered layout layouts/application.html.erb (Duration: 128.4ms | Allocations: 6810)
+Completed 500 Internal Server Error in 180ms (ActiveRecord: 0.0ms | Allocations: 7061)
+
+
+  
+ActionView::Template::Error (undefined method `javascript_pack_tag' for #<ActionView::Base:0x00000000014870>
+
+    '.freeze;@output_buffer.append=( javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' );@output_buffer.safe_append='
+                                     ^^^^^^^^^^^^^^^^^^^
+Did you mean?  javascript_path
+               javascript_tag):
+     5:     <%= csrf_meta_tags %>
+     6:     <%= csp_meta_tag %>
+     7:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     8:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+     9:   </head>
+    10: 
+    11:   <body>
+  
+app/views/layouts/application.html.erb:8
+Started GET "/" for ::1 at 2023-02-15 10:11:58 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (4.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 33.2ms | Allocations: 284)
+  Rendered layout layouts/application.html.erb (Duration: 1067.0ms | Allocations: 32784)
+Completed 500 Internal Server Error in 1388ms (ActiveRecord: 0.0ms | Allocations: 35765)
+
+
+  
+ActionView::Template::Error (undefined method `javascript_pack_tag' for #<ActionView::Base:0x0000000000b180>
+
+    '.freeze;@output_buffer.append=( javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' );@output_buffer.safe_append='
+                                     ^^^^^^^^^^^^^^^^^^^
+Did you mean?  javascript_path
+               javascript_tag):
+     5:     <%= csrf_meta_tags %>
+     6:     <%= csp_meta_tag %>
+     7:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     8:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+     9:   </head>
+    10: 
+    11:   <body>
+  
+app/views/layouts/application.html.erb:8
+Started GET "/" for ::1 at 2023-02-15 10:15:41 +0530
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 9.5ms | Allocations: 108)
+  Rendered layout layouts/application.html.erb (Duration: 128.6ms | Allocations: 6543)
+Completed 500 Internal Server Error in 210ms (ActiveRecord: 0.0ms | Allocations: 7336)
+
+
+  
+ActionView::Template::Error (undefined method `javascript_pack_tag' for #<ActionView::Base:0x0000000000b518>
+
+    '.freeze;@output_buffer.append=( javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' );@output_buffer.safe_append='
+                                     ^^^^^^^^^^^^^^^^^^^
+Did you mean?  javascript_path
+               javascript_tag):
+     5:     <%= csrf_meta_tags %>
+     6:     <%= csp_meta_tag %>
+     7:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     8:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+     9:   </head>
+    10: 
+    11:   <body>
+  
+app/views/layouts/application.html.erb:8
+Started GET "/articles" for ::1 at 2023-02-15 10:16:25 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (2.7ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:13
+  Rendered articles/index.html.erb within layouts/application (Duration: 43.8ms | Allocations: 5067)
+  Rendered layout layouts/application.html.erb (Duration: 125.4ms | Allocations: 11237)
+Completed 500 Internal Server Error in 240ms (ActiveRecord: 14.9ms | Allocations: 12893)
+
+
+  
+ActionView::Template::Error (undefined method `javascript_pack_tag' for #<ActionView::Base:0x0000000000b900>
+
+    '.freeze;@output_buffer.append=( javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' );@output_buffer.safe_append='
+                                     ^^^^^^^^^^^^^^^^^^^
+Did you mean?  javascript_path
+               javascript_tag):
+     5:     <%= csrf_meta_tags %>
+     6:     <%= csp_meta_tag %>
+     7:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     8:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+     9:   </head>
+    10: 
+    11:   <body>
+  
+app/views/layouts/application.html.erb:8
+Started GET "/articles/1" for ::1 at 2023-02-15 10:16:36 +0530
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (2.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:3:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (Duration: 8.4ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 107.5ms | Allocations: 6193)
+Completed 500 Internal Server Error in 169ms (ActiveRecord: 2.5ms | Allocations: 8920)
+
+
+  
+ActionView::Template::Error (undefined method `javascript_pack_tag' for #<ActionView::Base:0x0000000000bd88>
+
+    '.freeze;@output_buffer.append=( javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' );@output_buffer.safe_append='
+                                     ^^^^^^^^^^^^^^^^^^^
+Did you mean?  javascript_path
+               javascript_tag):
+     5:     <%= csrf_meta_tags %>
+     6:     <%= csp_meta_tag %>
+     7:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     8:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+     9:   </head>
+    10: 
+    11:   <body>
+  
+app/views/layouts/application.html.erb:8
+Started GET "/articles" for ::1 at 2023-02-15 10:21:31 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (4.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:13
+  Rendered articles/index.html.erb within layouts/application (Duration: 8.6ms | Allocations: 638)
+  Rendered layout layouts/application.html.erb (Duration: 191.4ms | Allocations: 6577)
+Completed 500 Internal Server Error in 258ms (ActiveRecord: 4.8ms | Allocations: 6825)
+
+
+  
+ActionView::Template::Error (undefined method `javascript_pack_tag' for #<ActionView::Base:0x0000000000c058>
+
+    '.freeze;@output_buffer.append=( javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' );@output_buffer.safe_append='
+                                     ^^^^^^^^^^^^^^^^^^^
+Did you mean?  javascript_path
+               javascript_tag):
+     5:     <%= csrf_meta_tags %>
+     6:     <%= csp_meta_tag %>
+     7:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     8:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+     9:   </head>
+    10: 
+    11:   <body>
+  
+app/views/layouts/application.html.erb:8
+Started GET "/" for ::1 at 2023-02-15 10:29:48 +0530
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 10.4ms | Allocations: 108)
+  Rendered layout layouts/application.html.erb (Duration: 141.7ms | Allocations: 6544)
+Completed 500 Internal Server Error in 210ms (Allocations: 7305)
+
+
+  
+ActionView::Template::Error (undefined method `javascript_pack_tag' for #<ActionView::Base:0x0000000000c3c8>
+
+    '.freeze;@output_buffer.append=( javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' );@output_buffer.safe_append='
+                                     ^^^^^^^^^^^^^^^^^^^
+Did you mean?  javascript_path
+               javascript_tag):
+     5:     <%= csrf_meta_tags %>
+     6:     <%= csp_meta_tag %>
+     7:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     8:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+     9:   </head>
+    10: 
+    11:   <body>
+  
+app/views/layouts/application.html.erb:8
+Started GET "/" for ::1 at 2023-02-15 10:30:49 +0530
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/anirudh/.rvm/gems/ruby-3.1.1/gems/railties-7.0.4.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/anirudh/.rvm/gems/ruby-3.1.1/gems/railties-7.0.4.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.2ms | Allocations: 286)
+Completed 200 OK in 69ms (Views: 3.4ms | Allocations: 1076)
+
+
+Started GET "/articles" for ::1 at 2023-02-15 10:31:00 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (7.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:13
+  Rendered articles/index.html.erb within layouts/application (Duration: 45.6ms | Allocations: 2348)
+  Rendered layout layouts/application.html.erb (Duration: 156.9ms | Allocations: 8772)
+Completed 500 Internal Server Error in 293ms (ActiveRecord: 11.6ms | Allocations: 10517)
+
+
+  
+ActionView::Template::Error (undefined method `javascript_pack_tag' for #<ActionView::Base:0x000000000109c8>
+
+    '.freeze;@output_buffer.append=( javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' );@output_buffer.safe_append='
+                                     ^^^^^^^^^^^^^^^^^^^
+Did you mean?  javascript_path
+               javascript_tag):
+     5:     <%= csrf_meta_tags %>
+     6:     <%= csp_meta_tag %>
+     7:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     8:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+     9:   </head>
+    10: 
+    11:   <body>
+  
+app/views/layouts/application.html.erb:8
+Started GET "/articles" for ::1 at 2023-02-15 10:32:40 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (4.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:13
+  Rendered articles/index.html.erb within layouts/application (Duration: 21.2ms | Allocations: 915)
+  Rendered layout layouts/application.html.erb (Duration: 906.1ms | Allocations: 20097)
+Completed 200 OK in 990ms (Views: 923.9ms | ActiveRecord: 4.4ms | Allocations: 20926)
+
+
+Started GET "/" for ::1 at 2023-02-15 10:33:10 +0530
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 9.0ms | Allocations: 110)
+  Rendered layout layouts/application.html.erb (Duration: 594.1ms | Allocations: 19080)
+Completed 200 OK in 660ms (Views: 606.6ms | Allocations: 19811)
+
+
+Started GET "/articles/new" for ::1 at 2023-02-15 10:36:36 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (Duration: 214.1ms | Allocations: 3042)
+  Rendered layout layouts/application.html.erb (Duration: 370.5ms | Allocations: 6158)
+Completed 200 OK in 553ms (Views: 374.5ms | ActiveRecord: 21.5ms | Allocations: 9442)
+
+
+Started POST "/articles" for ::1 at 2023-02-15 10:36:47 +0530
+Processing by ArticlesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "article"=>{"title"=>"Hello Rails", "description"=>""}, "commit"=>"Save Article"}
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (Duration: 3.8ms | Allocations: 2895)
+  Rendered layout layouts/application.html.erb (Duration: 182.3ms | Allocations: 5903)
+Completed 422 Unprocessable Entity in 234ms (Views: 185.3ms | ActiveRecord: 0.0ms | Allocations: 7489)
+
+
+Started POST "/articles" for ::1 at 2023-02-15 10:37:09 +0530
+Processing by ArticlesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "article"=>{"title"=>"Hello Rails", "description"=>"This is a test description"}, "commit"=>"Save Article"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/articles_controller.rb:16:in `create'
+  [1m[36mArticle Create (22.7ms)[0m  [1m[32mINSERT INTO "articles" ("description", "created_at", "updated_at", "title") VALUES (?, ?, ?, ?)[0m  [["description", "This is a test description"], ["created_at", "2023-02-15 05:07:09.548029"], ["updated_at", "2023-02-15 05:07:09.548029"], ["title", "Hello Rails"]]
+  ↳ app/controllers/articles_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (20.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/articles_controller.rb:16:in `create'
+Redirected to http://localhost:3000/articles/10
+Completed 302 Found in 101ms (ActiveRecord: 43.2ms | Allocations: 3365)
+
+
+Started GET "/articles/10" for ::1 at 2023-02-15 10:37:09 +0530
+Processing by ArticlesController#show as TURBO_STREAM
+  Parameters: {"id"=>"10"}
+  [1m[36mArticle Load (2.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:3:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (Duration: 17.0ms | Allocations: 139)
+  Rendered layout layouts/application.html.erb (Duration: 206.6ms | Allocations: 3208)
+Completed 200 OK in 279ms (Views: 209.2ms | ActiveRecord: 2.8ms | Allocations: 4753)
+
+

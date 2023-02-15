@@ -1,0 +1,8 @@
+<% if @article.errors.any? %>
+  <h2>Following Errors occured:-</h2>
+  <ul>
+    <% @article.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>

@@ -4223,3 +4223,64 @@ Processing by PagesController#home as HTML
 Completed 200 OK in 212ms (Views: 166.7ms | ActiveRecord: 0.0ms | Allocations: 4639)
 
 
+Started GET "/" for ::1 at 2023-02-15 18:45:51 +0530
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.2ms | Allocations: 71)
+  Rendered layout layouts/application.html.erb (Duration: 132.2ms | Allocations: 3126)
+Completed 200 OK in 166ms (Views: 133.8ms | Allocations: 3397)
+
+
+Started GET "/articles" for ::1 at 2023-02-15 18:45:53 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (2.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:13
+  Rendered articles/index.html.erb within layouts/application (Duration: 25.7ms | Allocations: 1916)
+  Rendered layout layouts/application.html.erb (Duration: 123.9ms | Allocations: 5233)
+Completed 200 OK in 188ms (Views: 131.7ms | ActiveRecord: 4.9ms | Allocations: 5837)
+
+
+Started GET "/articles/new" for ::1 at 2023-02-15 18:45:54 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (Duration: 9.2ms | Allocations: 1346)
+  Rendered layout layouts/application.html.erb (Duration: 123.2ms | Allocations: 4238)
+Completed 200 OK in 162ms (Views: 124.7ms | ActiveRecord: 0.0ms | Allocations: 4605)
+
+
+Started GET "/" for ::1 at 2023-02-15 18:55:15 +0530
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 8.9ms | Allocations: 264)
+  Rendered layout layouts/application.html.erb (Duration: 555.2ms | Allocations: 21287)
+Completed 500 Internal Server Error in 618ms (Allocations: 22189)
+
+
+  
+ActionView::Template::Error (Missing partial layout/_message with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}.
+
+Searched in:
+  * "/mnt/c/Users/anirudh.jain_oncehub/Documents/Training/Ruby On Rails/Learning Rails (Demo App)/app/views"
+  * "/home/anirudh/.rvm/gems/ruby-3.1.1/gems/actiontext-7.0.4.2/app/views"
+  * "/home/anirudh/.rvm/gems/ruby-3.1.1/gems/actionmailbox-7.0.4.2/app/views"
+
+Did you mean?  layouts/message
+               layouts/action_text/contents/content
+               articles/form
+               action_text/attachables/missing_attachable
+               action_text/attachables/remote_image
+               articles/error):
+    11:   </head>
+    12: 
+    13:   <body>
+    14:     <%= render 'layout/message' %>
+    15:     <%= yield %>
+    16:   </body>
+    17: </html>
+  
+app/views/layouts/application.html.erb:14

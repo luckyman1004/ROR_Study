@@ -4284,3 +4284,357 @@ Did you mean?  layouts/message
     17: </html>
   
 app/views/layouts/application.html.erb:14
+Started GET "/" for ::1 at 2023-02-15 18:55:37 +0530
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 6.2ms | Allocations: 256)
+  Rendered layouts/_message.html.erb (Duration: 7.6ms | Allocations: 157)
+  Rendered layout layouts/application.html.erb (Duration: 173.6ms | Allocations: 4034)
+Completed 200 OK in 243ms (Views: 193.6ms | Allocations: 4842)
+
+
+Started GET "/articles" for ::1 at 2023-02-15 18:55:40 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (4.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:13
+  Rendered articles/index.html.erb within layouts/application (Duration: 33.5ms | Allocations: 3178)
+  Rendered layouts/_message.html.erb (Duration: 0.1ms | Allocations: 32)
+  Rendered layout layouts/application.html.erb (Duration: 139.6ms | Allocations: 6576)
+Completed 200 OK in 234ms (Views: 145.8ms | ActiveRecord: 7.9ms | Allocations: 8213)
+
+
+Started GET "/articles/new" for ::1 at 2023-02-15 18:55:41 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (Duration: 8.7ms | Allocations: 1369)
+  Rendered layouts/_message.html.erb (Duration: 0.0ms | Allocations: 21)
+  Rendered layout layouts/application.html.erb (Duration: 105.3ms | Allocations: 4326)
+Completed 200 OK in 141ms (Views: 106.4ms | ActiveRecord: 0.0ms | Allocations: 4702)
+
+
+Started POST "/articles" for ::1 at 2023-02-15 18:55:58 +0530
+Processing by ArticlesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "article"=>{"title"=>"DRYing", "description"=>"This is DRYing Test"}, "commit"=>"Save Article"}
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 1783)
+  Rendered layouts/_message.html.erb (Duration: 0.0ms | Allocations: 21)
+  Rendered layout layouts/application.html.erb (Duration: 96.5ms | Allocations: 4778)
+Completed 422 Unprocessable Entity in 128ms (Views: 97.6ms | ActiveRecord: 0.0ms | Allocations: 6028)
+
+
+Started POST "/articles" for ::1 at 2023-02-15 18:56:12 +0530
+Processing by ArticlesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "article"=>{"title"=>"DRYing", "description"=>"This is DRYing Test for the code"}, "commit"=>"Save Article"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/articles_controller.rb:30:in `create'
+  [1m[36mArticle Create (10.6ms)[0m  [1m[32mINSERT INTO "articles" ("description", "created_at", "updated_at", "title") VALUES (?, ?, ?, ?)[0m  [["description", "This is DRYing Test for the code"], ["created_at", "2023-02-15 13:26:12.192767"], ["updated_at", "2023-02-15 13:26:12.192767"], ["title", "DRYing"]]
+  ↳ app/controllers/articles_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (11.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/articles_controller.rb:30:in `create'
+Redirected to http://localhost:3000/articles/14
+Completed 302 Found in 56ms (ActiveRecord: 22.5ms | Allocations: 2392)
+
+
+Started GET "/articles/14" for ::1 at 2023-02-15 18:56:12 +0530
+Processing by ArticlesController#show as TURBO_STREAM
+  Parameters: {"id"=>"14"}
+  [1m[36mArticle Load (4.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:47:in `set_article'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (Duration: 8.7ms | Allocations: 304)
+  Rendered layouts/_message.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered layout layouts/application.html.erb (Duration: 106.3ms | Allocations: 3418)
+Completed 200 OK in 150ms (Views: 107.4ms | ActiveRecord: 4.3ms | Allocations: 4856)
+
+
+Started GET "/articles" for ::1 at 2023-02-15 18:56:25 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (4.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:13
+  Rendered articles/index.html.erb within layouts/application (Duration: 6.8ms | Allocations: 1483)
+  Rendered layouts/_message.html.erb (Duration: 0.0ms | Allocations: 21)
+  Rendered layout layouts/application.html.erb (Duration: 97.1ms | Allocations: 4619)
+Completed 200 OK in 122ms (Views: 93.6ms | ActiveRecord: 4.6ms | Allocations: 4890)
+
+
+Started DELETE "/articles/14" for ::1 at 2023-02-15 18:56:29 +0530
+Processing by ArticlesController#destroy as TURBO_STREAM
+  Parameters: {"id"=>"14"}
+  [1m[36mArticle Load (2.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:47:in `set_article'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/articles_controller.rb:39:in `destroy'
+  [1m[36mArticle Destroy (11.8ms)[0m  [1m[31mDELETE FROM "articles" WHERE "articles"."id" = ?[0m  [["id", 14]]
+  ↳ app/controllers/articles_controller.rb:39:in `destroy'
+  [1m[36mTRANSACTION (9.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/articles_controller.rb:39:in `destroy'
+Redirected to http://localhost:3000/articles
+Completed 302 Found in 58ms (ActiveRecord: 23.3ms | Allocations: 2308)
+
+
+Started GET "/articles" for ::1 at 2023-02-15 18:56:29 +0530
+Processing by ArticlesController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (1.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:13
+  Rendered articles/index.html.erb within layouts/application (Duration: 4.3ms | Allocations: 1332)
+  Rendered layouts/_message.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered layout layouts/application.html.erb (Duration: 107.2ms | Allocations: 4466)
+Completed 200 OK in 135ms (Views: 106.5ms | ActiveRecord: 1.8ms | Allocations: 4740)
+
+
+Started GET "/articles/13" for ::1 at 2023-02-15 18:56:32 +0530
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mArticle Load (2.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:47:in `set_article'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 154)
+  Rendered layouts/_message.html.erb (Duration: 0.0ms | Allocations: 21)
+  Rendered layout layouts/application.html.erb (Duration: 90.4ms | Allocations: 3264)
+Completed 200 OK in 119ms (Views: 91.4ms | ActiveRecord: 2.1ms | Allocations: 3996)
+
+
+Started GET "/articles/13/edit" for ::1 at 2023-02-15 18:56:35 +0530
+Processing by ArticlesController#edit as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mArticle Load (2.7ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:47:in `set_article'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/edit.html.erb within layouts/application
+  Rendered articles/_error.html.erb (Duration: 5.2ms | Allocations: 163)
+  Rendered articles/_form.html.erb (Duration: 21.9ms | Allocations: 1521)
+  Rendered articles/edit.html.erb within layouts/application (Duration: 37.2ms | Allocations: 1772)
+  Rendered layouts/_message.html.erb (Duration: 0.1ms | Allocations: 20)
+  Rendered layout layouts/application.html.erb (Duration: 127.4ms | Allocations: 4733)
+Completed 200 OK in 177ms (Views: 128.5ms | ActiveRecord: 2.7ms | Allocations: 5517)
+
+
+Started GET "/articles" for ::1 at 2023-02-15 18:56:40 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (5.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:13
+  Rendered articles/index.html.erb within layouts/application (Duration: 7.9ms | Allocations: 1332)
+  Rendered layouts/_message.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered layout layouts/application.html.erb (Duration: 153.8ms | Allocations: 4441)
+Completed 200 OK in 194ms (Views: 149.8ms | ActiveRecord: 5.4ms | Allocations: 4711)
+
+
+Started GET "/articles/new" for ::1 at 2023-02-15 18:57:21 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (Duration: 6.3ms | Allocations: 1488)
+  Rendered layouts/_message.html.erb (Duration: 7.2ms | Allocations: 152)
+  Rendered layout layouts/application.html.erb (Duration: 134.9ms | Allocations: 5016)
+Completed 200 OK in 184ms (Views: 151.0ms | ActiveRecord: 0.0ms | Allocations: 5827)
+
+
+Started POST "/articles" for ::1 at 2023-02-15 18:57:48 +0530
+Processing by ArticlesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "article"=>{"title"=>"DRYing", "description"=>"This article is created for DRYing Test of Code"}, "commit"=>"Save Article"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/articles_controller.rb:30:in `create'
+  [1m[36mArticle Create (9.2ms)[0m  [1m[32mINSERT INTO "articles" ("description", "created_at", "updated_at", "title") VALUES (?, ?, ?, ?)[0m  [["description", "This article is created for DRYing Test of Code"], ["created_at", "2023-02-15 13:27:48.583945"], ["updated_at", "2023-02-15 13:27:48.583945"], ["title", "DRYing"]]
+  ↳ app/controllers/articles_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (11.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/articles_controller.rb:30:in `create'
+Redirected to http://localhost:3000/articles/15
+Completed 302 Found in 54ms (ActiveRecord: 20.3ms | Allocations: 2369)
+
+
+Started GET "/articles/15" for ::1 at 2023-02-15 18:57:48 +0530
+Processing by ArticlesController#show as TURBO_STREAM
+  Parameters: {"id"=>"15"}
+  [1m[36mArticle Load (3.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:47:in `set_article'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (Duration: 7.1ms | Allocations: 313)
+  Rendered layouts/_message.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered layout layouts/application.html.erb (Duration: 177.9ms | Allocations: 3488)
+Completed 200 OK in 221ms (Views: 179.5ms | ActiveRecord: 3.0ms | Allocations: 4350)
+
+
+Started GET "/articles" for ::1 at 2023-02-15 18:57:51 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (2.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:13
+  Rendered articles/index.html.erb within layouts/application (Duration: 9.2ms | Allocations: 1736)
+  Rendered layouts/_message.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered layout layouts/application.html.erb (Duration: 103.1ms | Allocations: 4845)
+Completed 200 OK in 135ms (Views: 102.0ms | ActiveRecord: 2.2ms | Allocations: 5170)
+
+
+Started GET "/articles/15/edit" for ::1 at 2023-02-15 18:57:57 +0530
+Processing by ArticlesController#edit as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mArticle Load (6.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:47:in `set_article'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/edit.html.erb within layouts/application
+  Rendered articles/_error.html.erb (Duration: 8.4ms | Allocations: 163)
+  Rendered articles/_form.html.erb (Duration: 23.9ms | Allocations: 1521)
+  Rendered articles/edit.html.erb within layouts/application (Duration: 43.2ms | Allocations: 1766)
+  Rendered layouts/_message.html.erb (Duration: 0.0ms | Allocations: 20)
+  Rendered layout layouts/application.html.erb (Duration: 154.4ms | Allocations: 4714)
+Completed 200 OK in 208ms (Views: 155.7ms | ActiveRecord: 6.2ms | Allocations: 5498)
+
+
+Started GET "/articles" for ::1 at 2023-02-15 18:58:03 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (2.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:13
+  Rendered articles/index.html.erb within layouts/application (Duration: 16.8ms | Allocations: 1483)
+  Rendered layouts/_message.html.erb (Duration: 0.0ms | Allocations: 21)
+  Rendered layout layouts/application.html.erb (Duration: 135.1ms | Allocations: 4616)
+Completed 200 OK in 159ms (Views: 133.8ms | ActiveRecord: 2.4ms | Allocations: 4886)
+
+
+Started GET "/articles/1/edit" for ::1 at 2023-02-15 18:58:10 +0530
+Processing by ArticlesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (1.9ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:47:in `set_article'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/edit.html.erb within layouts/application
+  Rendered articles/_error.html.erb (Duration: 0.0ms | Allocations: 14)
+  Rendered articles/_form.html.erb (Duration: 1.6ms | Allocations: 1090)
+  Rendered articles/edit.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1177)
+  Rendered layouts/_message.html.erb (Duration: 0.0ms | Allocations: 20)
+  Rendered layout layouts/application.html.erb (Duration: 85.9ms | Allocations: 4139)
+Completed 200 OK in 114ms (Views: 87.8ms | ActiveRecord: 1.9ms | Allocations: 4871)
+
+
+Started PATCH "/articles/1" for ::1 at 2023-02-15 18:58:24 +0530
+Processing by ArticlesController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "article"=>{"title"=>"First Article", "description"=>"This is the very first article created"}, "commit"=>"Update Article", "id"=>"1"}
+  [1m[36mArticle Load (2.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:47:in `set_article'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/articles_controller.rb:19:in `update'
+  [1m[36mArticle Update (6.9ms)[0m  [1m[33mUPDATE "articles" SET "description" = ?, "updated_at" = ? WHERE "articles"."id" = ?[0m  [["description", "This is the very first article created"], ["updated_at", "2023-02-15 13:28:24.606860"], ["id", 1]]
+  ↳ app/controllers/articles_controller.rb:19:in `update'
+  [1m[36mTRANSACTION (12.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/articles_controller.rb:19:in `update'
+Redirected to http://localhost:3000/articles/1
+Completed 302 Found in 59ms (ActiveRecord: 22.2ms | Allocations: 2786)
+
+
+Started GET "/articles/1" for ::1 at 2023-02-15 18:58:24 +0530
+Processing by ArticlesController#show as TURBO_STREAM
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (2.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:47:in `set_article'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 154)
+  Rendered layouts/_message.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered layout layouts/application.html.erb (Duration: 108.9ms | Allocations: 3270)
+Completed 200 OK in 157ms (Views: 110.0ms | ActiveRecord: 2.6ms | Allocations: 4005)
+
+
+Started GET "/articles" for ::1 at 2023-02-15 18:58:26 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (3.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:13
+  Rendered articles/index.html.erb within layouts/application (Duration: 6.6ms | Allocations: 1483)
+  Rendered layouts/_message.html.erb (Duration: 0.0ms | Allocations: 21)
+  Rendered layout layouts/application.html.erb (Duration: 101.0ms | Allocations: 4606)
+Completed 200 OK in 126ms (Views: 98.6ms | ActiveRecord: 3.5ms | Allocations: 4876)
+
+
+Started GET "/" for ::1 at 2023-02-16 10:35:54 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (5.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 33.1ms | Allocations: 519)
+  Rendered layouts/_message.html.erb (Duration: 15.2ms | Allocations: 183)
+  Rendered layout layouts/application.html.erb (Duration: 2274.4ms | Allocations: 45620)
+Completed 200 OK in 2551ms (Views: 2346.6ms | ActiveRecord: 0.0ms | Allocations: 48644)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddTitleColumnToArticles (20230214112237)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aarticles" ("id" integer NOT NULL PRIMARY KEY, "description" text DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "title" varchar DEFAULT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "aarticles" ("id","description","created_at","updated_at","title")
+                     SELECT "id","description","created_at","updated_at","title" FROM "articles"[0m
+  [1m[35m (6.5ms)[0m  [1m[35mDROP TABLE "articles"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "articles" ("id" integer NOT NULL PRIMARY KEY, "description" text DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "articles" ("id","description","created_at","updated_at")
+                     SELECT "id","description","created_at","updated_at" FROM "aarticles"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aarticles"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Delete All (6.3ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20230214112237"]]
+  [1m[36mTRANSACTION (16.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (4.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddTitleColumnToArticles (20230214112237)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (7.3ms)[0m  [1m[35mALTER TABLE "articles" ADD "title" varchar[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230214112237"]]
+  [1m[36mTRANSACTION (14.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (5.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (4.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (6.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20230216105503)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "email" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20230216105503)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "email" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (15.8ms)[0m  [1m[35mDROP TABLE "users"[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (4.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20230216105503)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (9.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "email" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (3.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230216105503"]]
+  [1m[36mTRANSACTION (10.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.9ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (4.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (3.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (15.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "test"], ["email", "test@example.com"], ["created_at", "2023-02-16 11:01:37.954759"], ["updated_at", "2023-02-16 11:01:37.954759"]]
+  [1m[36mTRANSACTION (13.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (20.0ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "test2"], ["email", "test2@example.com"], ["created_at", "2023-02-16 11:01:52.909091"], ["updated_at", "2023-02-16 11:01:52.909091"]]
+  [1m[36mTRANSACTION (13.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (4.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (6.1ms)[0m  [1m[33mUPDATE "users" SET "email" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["email", "editedTest@example.com"], ["updated_at", "2023-02-16 11:02:49.973369"], ["id", 1]]
+  [1m[36mTRANSACTION (9.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (4.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m

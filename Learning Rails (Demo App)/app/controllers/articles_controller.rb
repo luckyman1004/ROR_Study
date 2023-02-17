@@ -26,6 +26,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    @article.user = User.last                    # Temporary assignment of user to articles
 
     if @article.save
       flash[:notice] = "Article was created successfully."

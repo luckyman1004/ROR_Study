@@ -4646,3 +4646,484 @@ Migrating to CreateUsers (20230216105503)
   [1m[36mUser Exists? (5.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "test2"], ["LIMIT", 1]]
   [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "test2@example.com"], ["LIMIT", 1]]
   [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (3.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddUserIdToArticles (20230217045114)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (6.6ms)[0m  [1m[35mALTER TABLE "articles" ADD "user_id" int[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230217045114"]]
+  [1m[36mTRANSACTION (9.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (3.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2023-02-17 17:52:18 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 10.7ms | Allocations: 518)
+  Rendered layouts/_message.html.erb (Duration: 4.2ms | Allocations: 183)
+  Rendered layout layouts/application.html.erb (Duration: 1045.6ms | Allocations: 45576)
+Completed 200 OK in 1156ms (Views: 1078.0ms | ActiveRecord: 0.0ms | Allocations: 48579)
+
+
+Started GET "/articles" for ::1 at 2023-02-17 17:52:23 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (2.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:13
+  Rendered articles/index.html.erb within layouts/application (Duration: 29.7ms | Allocations: 6173)
+  Rendered layouts/_message.html.erb (Duration: 0.1ms | Allocations: 34)
+  Rendered layout layouts/application.html.erb (Duration: 116.3ms | Allocations: 9623)
+Completed 200 OK in 229ms (Views: 109.8ms | ActiveRecord: 12.0ms | Allocations: 12323)
+
+
+Started GET "/articles/new" for ::1 at 2023-02-17 17:52:25 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (Duration: 84.7ms | Allocations: 3020)
+  Rendered layouts/_message.html.erb (Duration: 0.0ms | Allocations: 30)
+  Rendered layout layouts/application.html.erb (Duration: 170.2ms | Allocations: 6132)
+Completed 200 OK in 200ms (Views: 171.4ms | ActiveRecord: 0.0ms | Allocations: 6585)
+
+
+Started GET "/articles" for ::1 at 2023-02-17 17:52:28 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (2.7ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:13
+  Rendered articles/index.html.erb within layouts/application (Duration: 5.2ms | Allocations: 1560)
+  Rendered layouts/_message.html.erb (Duration: 0.0ms | Allocations: 21)
+  Rendered layout layouts/application.html.erb (Duration: 89.5ms | Allocations: 4677)
+Completed 200 OK in 110ms (Views: 88.0ms | ActiveRecord: 2.7ms | Allocations: 4994)
+
+
+Started GET "/articles/new" for ::1 at 2023-02-17 17:52:34 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 958)
+  Rendered layouts/_message.html.erb (Duration: 0.0ms | Allocations: 21)
+  Rendered layout layouts/application.html.erb (Duration: 93.0ms | Allocations: 3916)
+Completed 200 OK in 120ms (Views: 94.3ms | ActiveRecord: 0.0ms | Allocations: 4203)
+
+
+Started POST "/articles" for ::1 at 2023-02-17 17:53:07 +0530
+Processing by ArticlesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "article"=>{"title"=>"Association Test", "description"=>"Testing 1..N Association between User and Article"}, "commit"=>"Save Article"}
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:29:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/articles_controller.rb:31:in `create'
+  [1m[36mUser Exists? (1.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["username", "test"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:31:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "editedTest@example.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:31:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/articles_controller.rb:31:in `create'
+Redirected to 
+Completed 500 Internal Server Error in 124ms (ActiveRecord: 12.6ms | Allocations: 15643)
+
+
+  
+NoMethodError (undefined method `user_url' for #<ArticlesController:0x0000000000b338>
+
+              target.public_send(method, *args)
+                    ^^^^^^^^^^^^):
+  
+app/controllers/articles_controller.rb:33:in `create'
+Started GET "/articles/new" for ::1 at 2023-02-17 17:54:31 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1218)
+  Rendered layouts/_message.html.erb (Duration: 0.1ms | Allocations: 32)
+  Rendered layout layouts/application.html.erb (Duration: 392.1ms | Allocations: 19956)
+Completed 200 OK in 520ms (Views: 394.1ms | ActiveRecord: 14.7ms | Allocations: 23668)
+
+
+Started POST "/articles" for ::1 at 2023-02-17 17:55:06 +0530
+Processing by ArticlesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "article"=>{"title"=>"Association Test", "description"=>"1..N association b/w user and articles"}, "commit"=>"Save Article"}
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:29:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1978)
+  Rendered layouts/_message.html.erb (Duration: 0.2ms | Allocations: 28)
+  Rendered layout layouts/application.html.erb (Duration: 115.6ms | Allocations: 5106)
+Completed 200 OK in 315ms (Views: 117.3ms | ActiveRecord: 14.4ms | Allocations: 12956)
+
+
+Started POST "/articles" for ::1 at 2023-02-17 17:55:09 +0530
+Processing by ArticlesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "article"=>{"title"=>"Association Test", "description"=>"1..N association b/w user and articles"}, "commit"=>"Save Article"}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:29:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1763)
+  Rendered layouts/_message.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered layout layouts/application.html.erb (Duration: 82.6ms | Allocations: 4715)
+Completed 200 OK in 119ms (Views: 84.7ms | ActiveRecord: 1.9ms | Allocations: 6491)
+
+
+Started POST "/articles" for ::1 at 2023-02-17 17:55:10 +0530
+Processing by ArticlesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "article"=>{"title"=>"Association Test", "description"=>"1..N association b/w user and articles"}, "commit"=>"Save Article"}
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:29:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1763)
+  Rendered layouts/_message.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered layout layouts/application.html.erb (Duration: 92.2ms | Allocations: 4715)
+Completed 200 OK in 121ms (Views: 93.3ms | ActiveRecord: 2.5ms | Allocations: 6343)
+
+
+Started POST "/articles" for ::1 at 2023-02-17 17:55:11 +0530
+Processing by ArticlesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "article"=>{"title"=>"Association Test", "description"=>"1..N association b/w user and articles"}, "commit"=>"Save Article"}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:29:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 1763)
+  Rendered layouts/_message.html.erb (Duration: 0.0ms | Allocations: 21)
+  Rendered layout layouts/application.html.erb (Duration: 85.4ms | Allocations: 4715)
+Completed 200 OK in 114ms (Views: 86.7ms | ActiveRecord: 1.9ms | Allocations: 6328)
+
+
+Started POST "/articles" for ::1 at 2023-02-17 17:55:13 +0530
+Processing by ArticlesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "article"=>{"title"=>"Association Test", "description"=>"1..N association b/w user and articles"}, "commit"=>"Save Article"}
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:29:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1763)
+  Rendered layouts/_message.html.erb (Duration: 0.0ms | Allocations: 21)
+  Rendered layout layouts/application.html.erb (Duration: 88.1ms | Allocations: 4715)
+Completed 200 OK in 116ms (Views: 89.2ms | ActiveRecord: 2.5ms | Allocations: 6334)
+
+
+Started POST "/articles" for ::1 at 2023-02-17 17:55:14 +0530
+Processing by ArticlesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "article"=>{"title"=>"Association Test", "description"=>"1..N association b/w user and articles"}, "commit"=>"Save Article"}
+  [1m[36mUser Load (4.0ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:29:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1763)
+  Rendered layouts/_message.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered layout layouts/application.html.erb (Duration: 101.0ms | Allocations: 4715)
+Completed 200 OK in 138ms (Views: 102.6ms | ActiveRecord: 4.0ms | Allocations: 6323)
+
+
+Started POST "/articles" for ::1 at 2023-02-17 17:55:15 +0530
+Processing by ArticlesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "article"=>{"title"=>"Association Test", "description"=>"1..N association b/w user and articles"}, "commit"=>"Save Article"}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:29:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1763)
+  Rendered layouts/_message.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered layout layouts/application.html.erb (Duration: 86.2ms | Allocations: 4715)
+Completed 200 OK in 126ms (Views: 87.4ms | ActiveRecord: 2.0ms | Allocations: 6319)
+
+
+Started POST "/articles" for ::1 at 2023-02-17 17:55:15 +0530
+Processing by ArticlesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "article"=>{"title"=>"Association Test", "description"=>"1..N association b/w user and articles"}, "commit"=>"Save Article"}
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:29:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 1763)
+  Rendered layouts/_message.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered layout layouts/application.html.erb (Duration: 90.0ms | Allocations: 4715)
+Completed 200 OK in 120ms (Views: 91.2ms | ActiveRecord: 2.9ms | Allocations: 6308)
+
+
+Started POST "/articles" for ::1 at 2023-02-17 17:55:15 +0530
+Processing by ArticlesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "article"=>{"title"=>"Association Test", "description"=>"1..N association b/w user and articles"}, "commit"=>"Save Article"}
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:29:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 1763)
+  Rendered layouts/_message.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered layout layouts/application.html.erb (Duration: 89.5ms | Allocations: 4718)
+Completed 200 OK in 120ms (Views: 90.6ms | ActiveRecord: 2.7ms | Allocations: 6310)
+
+
+Started GET "/articles" for ::1 at 2023-02-17 17:55:16 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (2.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:13
+  Rendered articles/index.html.erb within layouts/application (Duration: 4.9ms | Allocations: 1595)
+  Rendered layouts/_message.html.erb (Duration: 0.0ms | Allocations: 21)
+  Rendered layout layouts/application.html.erb (Duration: 110.8ms | Allocations: 4724)
+Completed 200 OK in 134ms (Views: 109.8ms | ActiveRecord: 2.1ms | Allocations: 5052)
+
+
+Started GET "/articles/new" for ::1 at 2023-02-17 17:55:18 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 960)
+  Rendered layouts/_message.html.erb (Duration: 0.0ms | Allocations: 21)
+  Rendered layout layouts/application.html.erb (Duration: 81.7ms | Allocations: 3917)
+Completed 200 OK in 104ms (Views: 83.0ms | ActiveRecord: 0.0ms | Allocations: 4191)
+
+
+Started POST "/articles" for ::1 at 2023-02-17 17:55:31 +0530
+Processing by ArticlesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "article"=>{"title"=>"Association Test", "description"=>"def create \n  @article = Article.new(article_params) \n  @article.user = User.first # <--- Add this line\n  if @article.save \n    flash[:notice] = \"Article was created successfully.\" \n    redirect_to @article \n  else \n    render 'new' \n  end \nend"}, "commit"=>"Save Article"}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:29:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (Duration: 2.4ms | Allocations: 2755)
+  Rendered layouts/_message.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered layout layouts/application.html.erb (Duration: 133.2ms | Allocations: 5707)
+Completed 200 OK in 158ms (Views: 134.4ms | ActiveRecord: 1.9ms | Allocations: 7332)
+
+
+Started POST "/articles" for ::1 at 2023-02-17 17:55:32 +0530
+Processing by ArticlesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "article"=>{"title"=>"Association Test", "description"=>"def create \n  @article = Article.new(article_params) \n  @article.user = User.first # <--- Add this line\n  if @article.save \n    flash[:notice] = \"Article was created successfully.\" \n    redirect_to @article \n  else \n    render 'new' \n  end \nend"}, "commit"=>"Save Article"}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:29:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (Duration: 2.6ms | Allocations: 2732)
+  Rendered layouts/_message.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered layout layouts/application.html.erb (Duration: 93.9ms | Allocations: 5689)
+Completed 200 OK in 128ms (Views: 94.9ms | ActiveRecord: 2.0ms | Allocations: 7323)
+
+
+Started POST "/articles" for ::1 at 2023-02-17 17:55:32 +0530
+Processing by ArticlesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "article"=>{"title"=>"Association Test", "description"=>"def create \n  @article = Article.new(article_params) \n  @article.user = User.first # <--- Add this line\n  if @article.save \n    flash[:notice] = \"Article was created successfully.\" \n    redirect_to @article \n  else \n    render 'new' \n  end \nend"}, "commit"=>"Save Article"}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:29:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (Duration: 2.4ms | Allocations: 2732)
+  Rendered layouts/_message.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered layout layouts/application.html.erb (Duration: 87.3ms | Allocations: 5687)
+Completed 200 OK in 116ms (Views: 88.4ms | ActiveRecord: 2.0ms | Allocations: 7304)
+
+
+Started POST "/articles" for ::1 at 2023-02-17 17:55:32 +0530
+Processing by ArticlesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "article"=>{"title"=>"Association Test", "description"=>"def create \n  @article = Article.new(article_params) \n  @article.user = User.first # <--- Add this line\n  if @article.save \n    flash[:notice] = \"Article was created successfully.\" \n    redirect_to @article \n  else \n    render 'new' \n  end \nend"}, "commit"=>"Save Article"}
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:29:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (Duration: 2.1ms | Allocations: 2732)
+  Rendered layouts/_message.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered layout layouts/application.html.erb (Duration: 116.5ms | Allocations: 5687)
+Completed 200 OK in 151ms (Views: 118.0ms | ActiveRecord: 2.4ms | Allocations: 7294)
+
+
+Started POST "/articles" for ::1 at 2023-02-17 17:56:13 +0530
+Processing by ArticlesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "article"=>{"title"=>"Association Test", "description"=>"def create \n  @article = Article.new(article_params) \n  @article.user = User.first # <--- Add this line\n  if @article.save \n    flash[:notice] = \"Article was created successfully.\" \n    redirect_to @article \n  else \n    render 'new' \n  end \nend"}, "commit"=>"Save Article"}
+  [1m[36mUser Load (4.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:29:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/articles_controller.rb:31:in `create'
+  [1m[36mUser Exists? (4.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["username", "test"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:31:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "editedTest@example.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:31:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/articles_controller.rb:31:in `create'
+Redirected to 
+Completed 500 Internal Server Error in 167ms (ActiveRecord: 33.9ms | Allocations: 15582)
+
+
+  
+NoMethodError (undefined method `user_url' for #<ArticlesController:0x00000000013ad8>
+
+              target.public_send(method, *args)
+                    ^^^^^^^^^^^^):
+  
+app/controllers/articles_controller.rb:33:in `create'
+Started GET "/articles/new" for ::1 at 2023-02-17 17:58:13 +0530
+Processing by ArticlesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 1212)
+  Rendered layouts/_message.html.erb (Duration: 0.1ms | Allocations: 32)
+  Rendered layout layouts/application.html.erb (Duration: 363.7ms | Allocations: 19949)
+Completed 200 OK in 509ms (Views: 365.5ms | ActiveRecord: 17.1ms | Allocations: 23654)
+
+
+Started POST "/articles" for ::1 at 2023-02-17 17:58:35 +0530
+Processing by ArticlesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "article"=>{"title"=>"Association Test", "description"=>"1..N association b/w user and articles"}, "commit"=>"Save Article"}
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:29:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/new.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1880)
+  Rendered layouts/_message.html.erb (Duration: 0.1ms | Allocations: 28)
+  Rendered layout layouts/application.html.erb (Duration: 117.4ms | Allocations: 4951)
+Completed 422 Unprocessable Entity in 195ms (Views: 118.8ms | ActiveRecord: 14.0ms | Allocations: 10031)
+
+
+Started POST "/articles" for ::1 at 2023-02-17 17:58:54 +0530
+Processing by ArticlesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "article"=>{"title"=>"Association", "description"=>"Testing 1..N association b/w user and articles"}, "commit"=>"Save Article"}
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:29:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/articles_controller.rb:31:in `create'
+  [1m[36mArticle Create (7.0ms)[0m  [1m[32mINSERT INTO "articles" ("description", "created_at", "updated_at", "title", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["description", "Testing 1..N association b/w user and articles"], ["created_at", "2023-02-17 12:28:54.966958"], ["updated_at", "2023-02-17 12:28:54.966958"], ["title", "Association"], ["user_id", 1]]
+  ↳ app/controllers/articles_controller.rb:31:in `create'
+  [1m[36mTRANSACTION (8.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/articles_controller.rb:31:in `create'
+Redirected to http://localhost:3000/articles/16
+Completed 302 Found in 48ms (ActiveRecord: 18.1ms | Allocations: 3847)
+
+
+Started GET "/articles/16" for ::1 at 2023-02-17 17:58:55 +0530
+Processing by ArticlesController#show as TURBO_STREAM
+  Parameters: {"id"=>"16"}
+  [1m[36mArticle Load (2.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:48:in `set_article'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (Duration: 5.4ms | Allocations: 344)
+  Rendered layouts/_message.html.erb (Duration: 0.1ms | Allocations: 25)
+  Rendered layout layouts/application.html.erb (Duration: 100.0ms | Allocations: 3475)
+Completed 200 OK in 135ms (Views: 101.2ms | ActiveRecord: 2.0ms | Allocations: 5047)
+
+
+Started GET "/articles" for ::1 at 2023-02-17 17:59:13 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (2.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:13
+  Rendered articles/index.html.erb within layouts/application (Duration: 5.8ms | Allocations: 1690)
+  Rendered layouts/_message.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered layout layouts/application.html.erb (Duration: 117.9ms | Allocations: 4802)
+Completed 200 OK in 141ms (Views: 116.8ms | ActiveRecord: 2.2ms | Allocations: 5075)
+
+
+  [1m[36mArticle Load (2.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mArticle Update All (20.3ms)[0m  [1m[33mUPDATE "articles" SET "user_id" = ?[0m  [["user_id", 2]]
+  [1m[36mArticle Load (2.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  [1m[36mUser Load (5.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (5.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 2]]
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mArticle Load (2.9ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mArticle Update (6.5ms)[0m  [1m[33mUPDATE "articles" SET "updated_at" = ?, "user_id" = ? WHERE "articles"."id" = ?[0m  [["updated_at", "2023-02-17 12:35:17.287298"], ["user_id", 1], ["id", 1]]
+  [1m[36mTRANSACTION (9.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mArticle Update (5.2ms)[0m  [1m[33mUPDATE "articles" SET "updated_at" = ?, "user_id" = ? WHERE "articles"."id" = ?[0m  [["updated_at", "2023-02-17 12:35:17.310111"], ["user_id", 1], ["id", 2]]
+  [1m[36mTRANSACTION (13.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mArticle Update (6.8ms)[0m  [1m[33mUPDATE "articles" SET "updated_at" = ?, "user_id" = ? WHERE "articles"."id" = ?[0m  [["updated_at", "2023-02-17 12:35:17.339375"], ["user_id", 1], ["id", 3]]
+  [1m[36mTRANSACTION (14.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (3.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mArticle Update (5.3ms)[0m  [1m[33mUPDATE "articles" SET "updated_at" = ?, "user_id" = ? WHERE "articles"."id" = ?[0m  [["updated_at", "2023-02-17 12:35:17.369644"], ["user_id", 1], ["id", 4]]
+  [1m[36mTRANSACTION (10.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mArticle Update (6.8ms)[0m  [1m[33mUPDATE "articles" SET "updated_at" = ?, "user_id" = ? WHERE "articles"."id" = ?[0m  [["updated_at", "2023-02-17 12:35:17.392906"], ["user_id", 1], ["id", 13]]
+  [1m[36mTRANSACTION (11.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mArticle Update (5.2ms)[0m  [1m[33mUPDATE "articles" SET "updated_at" = ?, "user_id" = ? WHERE "articles"."id" = ?[0m  [["updated_at", "2023-02-17 12:35:17.417975"], ["user_id", 1], ["id", 15]]
+  [1m[36mTRANSACTION (11.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mArticle Update (8.1ms)[0m  [1m[33mUPDATE "articles" SET "updated_at" = ?, "user_id" = ? WHERE "articles"."id" = ?[0m  [["updated_at", "2023-02-17 12:35:17.439694"], ["user_id", 1], ["id", 16]]
+  [1m[36mTRANSACTION (12.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mArticle Load (2.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[36mArticle Load (2.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  [1m[36mArticle Load (2.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY "articles"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mArticle Load (2.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mArticle Load (4.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mArticle Update (8.7ms)[0m  [1m[33mUPDATE "articles" SET "updated_at" = ?, "user_id" = ? WHERE "articles"."id" = ?[0m  [["updated_at", "2023-02-17 12:44:40.294758"], ["user_id", 2], ["id", 1]]
+  [1m[36mTRANSACTION (9.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mArticle Update (4.7ms)[0m  [1m[33mUPDATE "articles" SET "updated_at" = ?, "user_id" = ? WHERE "articles"."id" = ?[0m  [["updated_at", "2023-02-17 12:44:40.319887"], ["user_id", 2], ["id", 2]]
+  [1m[36mTRANSACTION (12.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mArticle Update (5.9ms)[0m  [1m[33mUPDATE "articles" SET "updated_at" = ?, "user_id" = ? WHERE "articles"."id" = ?[0m  [["updated_at", "2023-02-17 12:44:40.343352"], ["user_id", 2], ["id", 3]]
+  [1m[36mTRANSACTION (11.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (3.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mArticle Update (4.8ms)[0m  [1m[33mUPDATE "articles" SET "updated_at" = ?, "user_id" = ? WHERE "articles"."id" = ?[0m  [["updated_at", "2023-02-17 12:44:40.369285"], ["user_id", 2], ["id", 4]]
+  [1m[36mTRANSACTION (9.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mArticle Update (4.0ms)[0m  [1m[33mUPDATE "articles" SET "updated_at" = ?, "user_id" = ? WHERE "articles"."id" = ?[0m  [["updated_at", "2023-02-17 12:44:40.388923"], ["user_id", 2], ["id", 13]]
+  [1m[36mTRANSACTION (9.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mArticle Update (7.3ms)[0m  [1m[33mUPDATE "articles" SET "updated_at" = ?, "user_id" = ? WHERE "articles"."id" = ?[0m  [["updated_at", "2023-02-17 12:44:40.407637"], ["user_id", 2], ["id", 15]]
+  [1m[36mTRANSACTION (7.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (3.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mArticle Update (4.8ms)[0m  [1m[33mUPDATE "articles" SET "updated_at" = ?, "user_id" = ? WHERE "articles"."id" = ?[0m  [["updated_at", "2023-02-17 12:44:40.429947"], ["user_id", 2], ["id", 16]]
+  [1m[36mTRANSACTION (10.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArticle Load (3.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY "articles"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (3.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mArticle Load (4.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  [1m[36mArticle Update All (26.2ms)[0m  [1m[33mUPDATE "articles" SET "user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mArticle Load (4.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  [1m[36mArticle Load (3.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  [1m[36mArticle Load (4.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  [1m[36mArticle Load (3.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+Started GET "/articles" for ::1 at 2023-02-17 18:24:59 +0530
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (3.9ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:13
+  Rendered articles/index.html.erb within layouts/application (Duration: 38.5ms | Allocations: 3386)
+  Rendered layouts/_message.html.erb (Duration: 0.1ms | Allocations: 32)
+  Rendered layout layouts/application.html.erb (Duration: 533.2ms | Allocations: 22362)
+Completed 200 OK in 617ms (Views: 534.9ms | ActiveRecord: 7.8ms | Allocations: 24104)
+
+
+Started GET "/articles/1" for ::1 at 2023-02-17 18:25:54 +0530
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (1.9ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:48:in `set_article'
+  Rendering layout layouts/application.html.erb
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 158)
+  Rendered layouts/_message.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered layout layouts/application.html.erb (Duration: 86.6ms | Allocations: 3268)
+Completed 200 OK in 114ms (Views: 87.9ms | ActiveRecord: 1.9ms | Allocations: 4696)
+
+
